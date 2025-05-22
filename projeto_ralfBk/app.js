@@ -118,6 +118,54 @@ app.post('/produtos/excluir/:id', async (req, res) => {
   }
 });
 
+// Rota para carregar formulário de edição
+app.get('/produtos/editar/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const produto = await produtosCollection.findOne({ _id: new ObjectId(id) });
+
+    if (!produto) {
+      return res.status(404).send('Produto não encontrado');
+    }
+
+    res.render('editar', { produto });
+  } catch (err) {
+    console.error('Erro ao carregar produto:', err);
+    res.status(500).send('Erro ao carregar produto');
+  }
+});
+
+// Rota para atualizar produto
+app.post('/produtos/editar/:id', upload.single('imagem'), async (req, res) => {
+  const { id } = req.params;
+  const { nome, preco } = req.body;
+  const precoFormatado = parseInt(preco, 10);
+
+  if (!nome || isNaN(precoFormatado)) {
+    return res.status(400).send('Dados inválidos');
+  }
+
+  try {
+    const updateData = { nome, preco: precoFormatado };
+
+    // Se houver nova imagem, atualiza
+    if (req.file) {
+      updateData.imagem = `/uploads/${req.file.filename}`;
+    }
+
+    await produtosCollection.updateOne(
+      { _id: new ObjectId(id) },
+      { $set: updateData }
+    );
+
+    res.redirect('/');
+  } catch (err) {
+    console.error('Erro ao atualizar produto:', err);
+    res.status(500).send('Erro ao atualizar produto');
+  }
+});
+
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
