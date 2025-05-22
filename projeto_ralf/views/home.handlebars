@@ -95,26 +95,41 @@
     <h1><i class="fas fa-box-open me-2"></i>Produtos</h1>
   </div>
 
+
+
+
   <!-- Formulário -->
-  <form action="/produtos" method="POST" enctype="multipart/form-data" class="mb-4 p-3 bg-white rounded shadow-sm">
-    <div class="row g-3 align-items-end">
-      <div class="col-md-5">
-        <label for="nome" class="form-label">Nome do Produto</label>
-        <input type="text" name="nome" id="nome" class="form-control" placeholder="Ex: Teclado Mecânico" required>
-      </div>
-      <div class="col-md-3">
-        <label for="preco" class="form-label">Preço (em centavos)</label>
-        <input type="number" name="preco" id="preco" class="form-control" placeholder="Ex: 15000" required>
-      </div>
-      <div class="col-md-3">
-        <label for="imagem" class="form-label">Imagem do Produto</label>
-        <input type="file" name="imagem" id="imagem" class="form-control">
-      </div>
-      <div class="col-md-1 d-grid">
-        <button type="submit" class="btn btn-custom"><i class="fas fa-plus"></i></button>
-      </div>
+
+<form action="/produtos" method="POST" enctype="multipart/form-data" class="mb-4 p-3 bg-white rounded shadow-sm">
+  <div class="row g-3 align-items-end">
+    <div class="col-md-5 mb-3">
+      <label for="nome" class="form-label">Nome do Produto</label>
+      <input type="text" name="nome" id="nome" class="form-control" placeholder="Ex: Teclado Mecânico" required>
+      <br><br>
     </div>
-  </form>
+    <div class="col-md-3 mb-3">
+      <label for="preco" class="form-label">Preço (em centavos)</label>
+      <input type="number" name="preco" id="preco" class="form-control" placeholder="Ex: 15000" required>
+         <br><br>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="imagem" class="form-label">Imagem do Produto</label>
+      <input type="file" name="imagem" id="imagem" class="form-control">
+         <br><br>
+    </div>
+    <div class="col-md-1 d-grid mb-3">
+      <button type="submit" class="btn btn-custom"><i class="fas fa-plus"></i></button>
+         <br><br>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+  
 
   <!-- Filtro -->
   <form action="/buscar" method="GET" class="mb-4 p-3 bg-white rounded shadow-sm">
