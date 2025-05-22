@@ -102,23 +102,36 @@
 
   <!-- Formulário -->
   <form action="/produtos" method="POST" enctype="multipart/form-data" class="mb-4 p-3 bg-white rounded shadow-sm">
+
+
+
     <div class="row g-3 align-items-end">
-      <div class="col-md-5 mb-3">
-        <label for="nome" class="form-label">Nome do Produto</label>
-        <input type="text" name="nome" id="nome" class="form-control" placeholder="Ex: Teclado Mecânico" required>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="preco" class="form-label">Preço (em centavos)</label>
-        <input type="number" name="preco" id="preco" class="form-control" placeholder="Ex: 15000" required>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="imagem" class="form-label">Imagem do Produto</label>
-        <input type="file" name="imagem" id="imagem" class="form-control">
-      </div>
-      <div class="col-md-1 d-grid mb-3">
-        <button type="submit" class="btn btn-custom"><i class="fas fa-plus"></i></button>
-      </div>
+
+  <!-- Nome e Preço na mesma linha -->
+  <div class="col-md-8 d-flex gap-3">
+    <div class="flex-fill">
+      <label for="nome" class="form-label">Nome do Produto</label>
+      <input type="text" name="nome" id="nome" class="form-control" placeholder="Ex: Teclado Mecânico" required>
     </div>
+
+    <div class="flex-fill">
+      <label for="preco" class="form-label">Preço (em centavos)</label>
+      <input type="number" name="preco" id="preco" class="form-control" placeholder="Ex: 15000" required>
+    </div>
+  </div>
+
+  <!-- Imagem -->
+  <div class="col-md-3 mb-3">
+    <label for="imagem" class="form-label">Imagem do Produto</label>
+    <input type="file" name="imagem" id="imagem" class="form-control">
+  </div>
+
+  <!-- Botão -->
+  <div class="col-md-1 d-grid mb-3">
+    <button type="submit" class="btn btn-custom"><i class="fas fa-plus"></i></button>
+  </div>
+
+</div>
   </form>
 
   <!-- Filtro -->
@@ -150,8 +163,7 @@
  
 
 
-
-            <div class="card-body d-flex flex-column">
+<div class="card-body d-flex flex-column">
   <h5 class="card-title">{{this.nome}}</h5>
   <p class="card-text">{{formatarPreco this.preco}}</p>
 
