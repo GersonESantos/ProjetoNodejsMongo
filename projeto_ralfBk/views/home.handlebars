@@ -143,10 +143,27 @@
                 <i class="fas fa-image text-muted fs-2"></i>
               </div>
             {{/if}}
+
+
+
+
+
             <div class="card-body">
               <h5 class="card-title">{{this.nome}}</h5>
               <p class="card-text">{{formatarPreco this.preco}}</p>
+
+                  <!-- Formulário de exclusão -->
+              <form action="/produtos/excluir/{{this._id}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este produto?')">
+                <button type="submit" class="btn btn-danger btn-sm w-100">
+                  <i class="fas fa-trash"></i> Excluir
+                </button>
+              </form>
             </div>
+
+
+
+
+
           </div>
         </div>
       {{/each}}

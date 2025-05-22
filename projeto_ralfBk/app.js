@@ -1,6 +1,8 @@
 const express = require('express');
 const { engine } = require('express-handlebars');
-const { MongoClient } = require('mongodb');
+
+const { MongoClient, ObjectId } = require('mongodb');
+
 const multer = require('multer');
 const path = require('path');
 const app = express();
@@ -100,6 +102,19 @@ app.get('/buscar', async (req, res) => {
     res.render('home', { produtos, busca: q });
   } catch (err) {
     res.status(500).send('Erro na busca');
+  }
+});
+// Rota para excluir produto
+app.post('/produtos/excluir/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+   await produtosCollection.deleteOne({ _id: new ObjectId(id) });
+
+    res.redirect('/'); // Volta pra página inicial
+  } catch (err) {
+    console.error('Erro ao excluir produto:', err);
+    res.status(500).send('Erro ao excluir produto');
   }
 });
 
